@@ -3,8 +3,8 @@ import numpy
 import matplotlib.pyplot as plt
 import soundfile as sf
 # Here are the params to tweak
-db_filter = 15
-filePath = "./audio_sample/Yacine/Yacine.wav"
+db_filter = 17
+filePath = "./audio_sample/Blaise/Blaise.wav"
 
 plt.figure()
 x, sr = librosa.load(filePath)

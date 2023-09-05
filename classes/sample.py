@@ -17,10 +17,11 @@ class Sample:
 
     data = []
     target = []
-    def __init__(self, filePath) -> None:
+    def __init__(self, filePath, test_sample = False) -> None:
         self.data, sr = librosa.load(filePath)
-        self.data = librosa.feature.mfcc(y=self.data, sr=sr, n_fft=512)
+        self.data = librosa.feature.mfcc(y=self.data, sr=sr, htk=True, lifter=80, n_mfcc=40)
         self.data = numpy.transpose(self.data)
-        self.target = [Sample.currentId] * len(self.data)
-        Sample.samples.append(self)
-        Sample.currentId += 1
+        if not test_sample:
+            self.target = [Sample.currentId] * len(self.data)
+            Sample.samples.append(self)
+            Sample.currentId += 1
